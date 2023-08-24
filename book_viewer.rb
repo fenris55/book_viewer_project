@@ -1,6 +1,6 @@
 require "tilt/erubis"
 require "sinatra"
-require "sinatra/reloader"
+require "sinatra/reloader" if development?
 
 before do 
   @contents = File.readlines("data/toc.txt")
@@ -73,3 +73,11 @@ helpers do
     text.gsub(term, %(<strong>#{term}</strong>))
   end
 end
+
+=begin
+Note: 
+The following lines added to layout.erb to add search page to sidebar menu:
+              <li class="pure_menu-item">
+                <a href="/search" class="pure-menu-link">Search</a>
+              </li>
+=end
